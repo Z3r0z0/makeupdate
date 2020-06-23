@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MakeUpdate": {
+      "commandName": "Project",
+      "commandLineArgs": "appsettings.json -enabled -text \"Das ist ein Test\""
+    }
+  }
+}

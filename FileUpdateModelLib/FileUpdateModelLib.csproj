@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UpdateModelLib\UpdateModelLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <CompiledFiles Include="$(TargetPath)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="FileUpdateModel.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Copy SourceFiles="@(CompiledFiles)" DestinationFolder="$(SolutionDir)MakeUpdate\Model" SkipUnchangedFiles="true" />
+  </Target>
+  
+</Project>
